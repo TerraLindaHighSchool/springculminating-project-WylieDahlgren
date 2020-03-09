@@ -18,8 +18,9 @@ public class Enemy : MonoBehaviour
     {
         Vector3 lookDirection = (transform.position - player.transform.position).normalized;
         float yAngle = Mathf.Atan2(lookDirection.x, lookDirection.z) * 180 / Mathf.PI;
-        transform.Translate(lookDirection * Time.deltaTime * speed);
-        transform.Rotate(0, yAngle, 0);
-        Debug.Log(yAngle);
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        transform.Rotate(new Vector3 (0,yAngle - this.transform.rotation.eulerAngles.y + 180, 0));
     }
+
+   
 }
