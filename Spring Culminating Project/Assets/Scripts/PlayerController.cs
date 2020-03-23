@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float verticalInput;
     public float speed = 10.0f;
     public float speedX = 13.0f;
-    public float xRange = 30;
+    public float xRange = 50;
     public GameObject projectilePrefab;
     public float RotateSpeed = 30f;
     private float health = 5;
