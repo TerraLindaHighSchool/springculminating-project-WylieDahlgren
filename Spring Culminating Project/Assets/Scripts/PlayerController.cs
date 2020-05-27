@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float xRange = 50;
     public GameObject projectilePrefab;
     public float RotateSpeed = 30f;
-    private float health = 5;
+    public float healthPlayer = 5;
     private GameObject enemy;
     // Start is called before the first frame update
     void Start()
@@ -58,8 +59,11 @@ public class PlayerController : MonoBehaviour
         }
         transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed);
     }
-    private void OnTriggerEnter(Collider enemy)
+    private void OnTriggerEnter(Collider other)
     {
-        health--;
+        if (other.gameObject.tag == "Hitbox")
+        {
+            healthPlayer--;
+        }
     }
 }
