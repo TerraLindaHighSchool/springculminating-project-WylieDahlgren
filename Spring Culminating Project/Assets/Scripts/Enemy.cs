@@ -1,15 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class Enemy : MonoBehaviour
 {
     public float speed = 5;
     private GameObject player;
     public int healthEnemy = 3;
-    public int numOfEnemies = 3;
-    public string nextLevel;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +22,6 @@ public class Enemy : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
         transform.Rotate(new Vector3 (0,yAngle - this.transform.rotation.eulerAngles.y + 180, 0));
         death();
-        if (numOfEnemies == 0)
-        {
-            SceneManager.LoadScene(nextLevel);
-        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -42,7 +36,6 @@ public class Enemy : MonoBehaviour
         if (healthEnemy <= 0)
         {
             Destroy(gameObject);
-            numOfEnemies--;
         }
     }
 }

@@ -1,25 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class DetectCollisions : MonoBehaviour
+public class Tutorial : MonoBehaviour
 {
+    public string home;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    private void OnTriggerEnter(Collider other)
+    public void Home()
     {
-        if(other.tag == "Obstacle")
-        {
-            Destroy(gameObject);
-        }
+        SceneManager.LoadScene(home);
     }
 }

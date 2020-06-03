@@ -8,12 +8,12 @@ public class PlayerController : MonoBehaviour
     //public float horizontalInput;
     public float verticalInput;
     public float speed = 10.0f;
-    public float speedX = 13.0f;
     public float xRange = 50;
     public GameObject projectilePrefab;
     public float RotateSpeed = 30f;
     public float healthPlayer = 5;
     private GameObject enemy;
+    public string mainMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,19 +25,19 @@ public class PlayerController : MonoBehaviour
     {
         if (transform.position.x < -xRange)
         {
-            transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
+            //transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
         }
         if(transform.position.x > xRange)
         {
-            transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+            //transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
         if (transform.position.z < -xRange)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, -xRange);
+           //transform.position = new Vector3(transform.position.x, transform.position.y, -xRange);
         }
         if (transform.position.z > xRange)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, xRange);
+            //transform.position = new Vector3(transform.position.x, transform.position.y, xRange);
         }
         if (Input.GetKey(KeyCode.A))
             transform.Rotate(-Vector3.up * RotateSpeed * Time.deltaTime);
@@ -53,17 +53,21 @@ public class PlayerController : MonoBehaviour
         {
             verticalInput = 0;
         }
-        if(Input.GetKey(KeyCode.R))
-        {
-            transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speedX);
-        }
         transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed);
+        Death();
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Hitbox")
         {
             healthPlayer--;
+        }
+    }
+    private void Death()
+    {
+        if(healthPlayer <= 0)
+        {
+            SceneManager.LoadScene(mainMenu);
         }
     }
 }
