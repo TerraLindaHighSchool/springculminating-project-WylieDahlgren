@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class FollowPlayer: MonoBehaviour
@@ -17,5 +18,6 @@ public class FollowPlayer: MonoBehaviour
     void Update()
     {
         transform.position = player.transform.position + offset;
+        //transform.Rotate() = player.transform.Rotate();
     }
 }
